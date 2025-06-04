@@ -26,7 +26,7 @@ const todoController = {
             return res.status(400).json({ error: 'Faltan campos obligatorios' });
           }
           try {
-            const result = await Todo.post(nombre, apellido, edad, calificacion);
+            const result = await Todo.post(description);
             res.status(201).json({ message: 'dato insertado correctamente', id: result.insertId });
           } catch (error) {
             console.error('Error al insertar al dato:', error);
