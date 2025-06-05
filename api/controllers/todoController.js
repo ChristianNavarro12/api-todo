@@ -38,7 +38,7 @@ const todoController = {
         const id = req.params.id;
         const { description } = req.body;
         try {
-          await Todo.put(description);
+          await Todo.put(id,description);
           res.json({ message: 'dato actualizado correctamente' });
         } catch (error) {
           console.error('Error al actualizar el dato:', error);
