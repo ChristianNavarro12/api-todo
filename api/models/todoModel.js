@@ -12,11 +12,11 @@ const Todo = {
        }
     },
 
-    post: async(nombre, apellido, edad, calificacion)=>{
+    post: async(description)=>{
         try {
             const [result] = await pool.execute(
               'INSERT INTO todo (description) VALUES (?)',
-              [nombre, apellido, edad, calificacion]
+              [description]
             );
             return result;
           } catch (error) {
@@ -25,11 +25,11 @@ const Todo = {
           }
     },
 
-    put: async(id, nombre, apellido, edad, calificacion)=>{
+    put: async(id, description)=>{
         try{
             const result = await pool.execute(
                 'UPDATE todo SET description = ? WHERE id = ?',
-                [nombre, apellido, edad, calificacion, id]
+                [description, id]
             );
             return result;
         } catch (error){
