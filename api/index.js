@@ -9,7 +9,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => {
+  res.json({
+    mensaje: "📌 API REST en Vercel funcionando correctamente",
+    rutas_disponibles: {
+      GET: "https://api-todo-gold.vercel.app/api/todo",
+      POST: "https://api-todo-gold.vercel.app/api/todo",
+      PUT: "https://api-todo-gold.vercel.app/api/todo/:id",
+      DELETE: "https://api-todo-gold.vercel.app/api/todo:id"
+    },
+    nota: "Swagger no está disponible porque Vercel usa funciones serverless"
+  })
+});
 
 app.use("/api", require("./routes/indexRouter"));
 
